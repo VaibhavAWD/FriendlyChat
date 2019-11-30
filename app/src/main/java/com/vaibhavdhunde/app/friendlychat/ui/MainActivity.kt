@@ -1,7 +1,7 @@
 package com.vaibhavdhunde.app.friendlychat.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.vaibhavdhunde.app.friendlychat.R
@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupBinding()
+        fetchMessages()
     }
 
     private fun setupBinding() {
@@ -22,7 +23,12 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
         binding.apply {
             viewmodel = this@MainActivity.viewModel
+            adapter = MessagesListAdapter()
             lifecycleOwner = this@MainActivity
         }
+    }
+
+    private fun fetchMessages() {
+        binding.viewmodel?.fetchMessages()
     }
 }

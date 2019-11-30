@@ -8,12 +8,37 @@
         <variable
             name="viewmodel"
             type="com.vaibhavdhunde.app.friendlychat.ui.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.vaibhavdhunde.app.friendlychat.ui.MessagesListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/chat_bg"
         tools:context=".ui.MainActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_messages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="64dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            app:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:messages="@{viewmodel.messages}"
+            tools:listitem="@layout/item_text_msg" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_send_image"
@@ -39,8 +64,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/msg_box_bg"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/message_bg"
             android:hint="@string/hint_type_message"
             android:inputType="textMultiLine"
             android:maxHeight="200dp"

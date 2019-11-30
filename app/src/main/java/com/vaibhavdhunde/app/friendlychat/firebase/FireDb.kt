@@ -1,7 +1,6 @@
 package com.vaibhavdhunde.app.friendlychat.firebase
 
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.vaibhavdhunde.app.friendlychat.firebase.FireDb.Collections.MESSAGES
 import com.vaibhavdhunde.app.friendlychat.model.FriendlyMessage
 
@@ -22,5 +21,39 @@ object FireDb {
     // which generates unique ID for each message stored in the database
     fun sendMessage(message: FriendlyMessage) {
         mMsgRef.push().setValue(message)
+    }
+
+    fun addMessagesEventListener(onListen: (List<FriendlyMessage>?) -> Unit): ChildEventListener {
+        val listener = object : ChildEventListener {
+            val messages = mutableListOf<FriendlyMessage>()
+
+            override fun onChildAdded(data: DataSnapshot, p1: String?) {
+                val message = data.getValue(FriendlyMessage::class.java)
+                message?.let { messages.add(message) }
+                onListen(messages.toList())
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        }
+        mMsgRef.addChildEventListener(listener)
+        return listener
+    }
+
+    fun removeMessagesEventListener(listener: ChildEventListener) {
+        mMsgRef.removeEventListener(listener)
     }
 }

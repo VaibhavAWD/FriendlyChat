@@ -2,4 +2,6 @@
 <resources>
     <dimen name="one">1dp</dimen>
     <dimen name="msg_box_corners">9dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="eight">8dp</dimen>
 </resources>

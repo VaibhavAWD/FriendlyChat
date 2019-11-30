@@ -6,4 +6,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="white">#FFF</color>
     <color name="box_border">#666</color>
+    <color name="black">#000</color>
+    <color name="chat_bg">#F1EBE1</color>
 </resources>
