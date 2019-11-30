@@ -31,8 +31,16 @@ task clean(type: Delete) {
 }
 
 ext {
+    // Android Core versions
+    material_version = "1.2.0-alpha02"
+    // End Android Core versions
+
+    // Arch Component versions
+    lifecycle_version = "2.2.0-rc02"
+    // End Arch Component versions
 
     // Firebase versions
+    firebase_database_version = "19.2.0"
     firebase_analytics_version = "17.2.1"
     // End Firebase versions
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FriendlyChat</string>
+    <string name="hint_type_message">Type message</string>
 </resources>
