@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FriendlyChat</string>
     <string name="hint_type_message">Type message</string>
+    <string name="error_no_network">No network!</string>
+    <string name="error_unknown">Something went wrong!</string>
+    <string name="menu_logout">Logout</string>
 </resources>

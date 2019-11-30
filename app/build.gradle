@@ -67,6 +67,10 @@ dependencies {
     // ************ End Architecture Component Dependencies *******************//
 
     // ************************ Firebase Dependencies *********************************//
+    // Auth
+    implementation "com.google.firebase:firebase-auth:$firebaseauth_version"
+    implementation "com.firebaseui:firebase-ui-auth:$firebaseauth_ui_version"
+
     // Realtime Database
     implementation "com.google.firebase:firebase-database:$firebase_database_version"
 
